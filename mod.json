@@ -1,17 +1,33 @@
 {
-   "Name": "Example.Mod",
-   "Description": "A cool mod that does cool stuff",
-   "Version": "1.0.0",
-   "DownloadLink": "https://northstar.thunderstore.io/package/download/Example/Mod/",
+	"Name" : "HotPotato",
+	"Description": "Allows HotPotato to be played in servers gamemodes",
+	"Version": "1.0.0",
+	"LoadPriority": 1,
+	"RequiredOnClient": true,
 
-   "LoadPriority": 0,
-   "ConVars": [],
-   "Scripts": [{
-      "Path": "example.nut",
-      "RunOn": "(CLIENT || SERVER) && MP",
-      "ClientCallback": {
-         "Before":"example_callback"
-      }
-   }],
-   "Localisation": []
+	"Scripts": [
+		{
+			"Path": "gamemodes/sh_gamemode_hotpotato.nut",
+			"RunOn": "( CLIENT || SERVER ) && MP",
+			"ClientCallback": {
+				"Before": "Sh_GamemodeHotPotato_Init"
+			},
+
+			"ServerCallback": {
+				"Before": "Sh_GamemodeHotPotato_Init"
+			}
+		},
+		{
+			"Path": "gamemodes/_gamemode_hotpotato.nut",
+			"RunOn": "SERVER && MP"
+		},
+        {
+			"Path": "gamemodes/cl_gamemode_hotpotato.nut",
+			"RunOn": "CLIENT && MP"
+		}
+	],
+
+	"Localisation": [
+		"resource/hotpotato_custom_%language%.txt"
+	]
 }
