@@ -22,6 +22,7 @@ void function CreateGamemodeHotPotato()
 
 	GameMode_SetDefaultScoreLimits( GAMEMODE_HOTPOTATO, 12, 0 ) // set this to default max 12 player count
 	AddPrivateMatchMode( GAMEMODE_HOTPOTATO ) // add to private lobby modes
+	AddPrivateMatchModeSettingArbitrary( "#GAMEMODE_HOTPOTATO", "hotpotato_timer", "30.0" )
 
 	#if SERVER
 		GameMode_AddServerInit( GAMEMODE_HOTPOTATO, GamemodeHotPotato_Init )

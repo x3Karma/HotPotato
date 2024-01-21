@@ -46,7 +46,7 @@ void function OnPlayerKilled( entity victim, entity attacker, var damageInfo )
 
 void function HotPotatoInit()
 {
-	file.hotPotatoEnd = 30.0 
+	file.hotPotatoEnd = GetCurrentPlaylistVarFloat( "hotpotato_timer", 30.0 ) 
 	thread HotPotatoInitCountdown()
 }
 
