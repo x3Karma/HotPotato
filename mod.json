@@ -4,6 +4,12 @@
 	"Version": "1.1.0",
 	"LoadPriority": 1,
 	"RequiredOnClient": true,
+	"ConVars": [
+        {
+            "Name": "hotpotato_timer",
+            "DefaultValue": "30.0"
+        }
+    ],
 
 	"Scripts": [
 		{

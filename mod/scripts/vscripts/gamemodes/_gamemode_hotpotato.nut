@@ -4,7 +4,7 @@ struct
 {
 	bool firstMarked                     // true when the first player has been marked
 	float hotPotatoStart                 // Time() when first started
-	float hotPotatoEnd                   // playlist var "hotpotato_timer", default 30.0 seconds
+	float hotPotatoEnd = 30.0                   // playlist var "hotpotato_timer", default 30.0 seconds
 	entity marked                        // player that is currently marked
 	array<entity> activePlayers          // non-spectators players
 	int alivePlayers                     // separate from activePlayers because I have trust issues in my own code
@@ -46,7 +46,7 @@ void function OnPlayerKilled( entity victim, entity attacker, var damageInfo )
 
 void function HotPotatoInit()
 {
-	file.hotPotatoEnd = GetCurrentPlaylistVarFloat( "hotpotato_timer", 30.0 ) 
+	file.hotPotatoEnd = GetConVarFloat( "hotpotato_timer" ) 
 	thread HotPotatoInitCountdown()
 }
 
