@@ -4,7 +4,7 @@ struct
 {
 	bool firstMarked                     // true when the first player has been marked
 	float hotPotatoStart                 // Time() when first started
-	float hotPotatoEnd = 30.0                   // playlist var "hotpotato_timer", default 30.0 seconds
+	float hotPotatoEnd = 30.0            // playlist var "hotpotato_timer", default 30.0 seconds
 	entity marked                        // player that is currently marked
 	array<entity> activePlayers          // non-spectators players
 	int alivePlayers                     // separate from activePlayers because I have trust issues in my own code
@@ -12,26 +12,26 @@ struct
 
 void function GamemodeHotPotato_Init()
 {
-    SetSpawnpointGamemodeOverride( FFA )
+	SetSpawnpointGamemodeOverride( FFA )
 
-    SetShouldUseRoundWinningKillReplay( true )
-    SetLoadoutGracePeriodEnabled( false ) // prevent modifying loadouts with grace period
-    SetWeaponDropsEnabled( false )
-    SetRespawnsEnabled( true )
-    Riff_ForceTitanAvailability( eTitanAvailability.Never )
-    Riff_ForceBoostAvailability( eBoostAvailability.Disabled )
-    ClassicMP_ForceDisableEpilogue( true )
+	SetShouldUseRoundWinningKillReplay( true )
+	SetLoadoutGracePeriodEnabled( false ) // prevent modifying loadouts with grace period
+	SetWeaponDropsEnabled( false )
+	SetRespawnsEnabled( true )
+	Riff_ForceTitanAvailability( eTitanAvailability.Never )
+	Riff_ForceBoostAvailability( eBoostAvailability.Disabled )
+	ClassicMP_ForceDisableEpilogue( true )
 
-    AddCallback_OnClientConnected( HotPotatoInitPlayer )
-    AddCallback_OnPlayerRespawned( UpdateHotPotatoLoadout )
-    AddCallback_OnPlayerKilled( HotPotatoPlayerKilled )
-    AddCallback_OnClientDisconnected( HotPotatoPlayerDisconnected )
-    AddCallback_GameStateEnter( eGameState.Playing, HotPotatoInit )
+	AddCallback_OnClientConnected( HotPotatoInitPlayer )
+	AddCallback_OnPlayerRespawned( UpdateHotPotatoLoadout )
+	AddCallback_OnPlayerKilled( HotPotatoPlayerKilled )
+	AddCallback_OnClientDisconnected( HotPotatoPlayerDisconnected )
+	AddCallback_GameStateEnter( eGameState.Playing, HotPotatoInit )
 
-    AddDamageCallback( "player", MarkNewPlayer )
-    RegisterWeaponDamageSource( "mp_weapon_hotpotato", "Hot Potato Exploded" ) // yay i love 1.9.4
-    RegisterSignal( "OnMarkedDeath" )
-    // DROP_BATTERY_ON_DEATH = false
+	AddDamageCallback( "player", MarkNewPlayer )
+	RegisterWeaponDamageSource( "mp_weapon_hotpotato", "Hot Potato Exploded" ) // yay i love 1.9.4
+	RegisterSignal( "OnMarkedDeath" )
+	// DROP_BATTERY_ON_DEATH = false
 }
 
 void function OnPlayerKilled( entity victim, entity attacker, var damageInfo )
@@ -80,7 +80,7 @@ void function MarkRandomPlayer( entity player )
 
 	foreach ( entity p in GetPlayerArray() )
 	{
-	    Remote_CallFunction_NonReplay( p, "ServerCallback_ShowHotPotatoCountdown", file.hotPotatoStart + file.hotPotatoEnd )
+		Remote_CallFunction_NonReplay( p, "ServerCallback_ShowHotPotatoCountdown", file.hotPotatoStart + file.hotPotatoEnd )
 		Highlight_SetEnemyHighlightWithParam1( p, "enemy_sonar", <0, 0, 0> )
 		if ( p != player )
 			NSSendAnnouncementMessageToPlayer( p, "Hot Potato", player.GetPlayerName() + " has the potato!", <1,1,0>, 1, 1)
@@ -194,7 +194,7 @@ void function HotPotatoPlayerDisconnected( entity player )
 			foreach ( entity p in GetPlayerArray() )
 			{
 				Highlight_ClearEnemyHighlight(p)
-                Remote_CallFunction_NonReplay( p, "ServerCallback_ShowHotPotatoCountdown", Time() )
+				Remote_CallFunction_NonReplay( p, "ServerCallback_ShowHotPotatoCountdown", Time() )
 				NSSendPopUpMessageToPlayer( p, "The player with the hot potato has disconnected!" )
 			}
 
