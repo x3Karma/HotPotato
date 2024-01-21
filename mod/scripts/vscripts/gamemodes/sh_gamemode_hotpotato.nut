@@ -16,8 +16,8 @@ void function CreateGamemodeHotPotato()
 	GameMode_SetDesc( GAMEMODE_HOTPOTATO, "#PL_hotpotato_desc" )
 	GameMode_SetGameModeAnnouncement( GAMEMODE_HOTPOTATO, "ffa_modeDesc" )
 	GameMode_SetDefaultTimeLimits( GAMEMODE_HOTPOTATO, 30, 0.0 )
-	GameMode_AddScoreboardColumnData( GAMEMODE_HOTPOTATO, "#SCOREBOARD_SCORE", PGS_ASSAULT_SCORE, 2 )
-	GameMode_AddScoreboardColumnData( GAMEMODE_HOTPOTATO, "#SCOREBOARD_PILOT_KILLS", PGS_PILOT_KILLS, 2 )
+	GameMode_AddScoreboardColumnData( GAMEMODE_HOTPOTATO, "#SCOREBOARD_HOTPOTATOPASS", PGS_ASSAULT_SCORE, 2 )
+	GameMode_AddScoreboardColumnData( GAMEMODE_HOTPOTATO, "#SCOREBOARD_HOTPOTATOSURVIVED", PGS_PILOT_KILLS, 2 )
 	GameMode_SetColor( GAMEMODE_HOTPOTATO, [147, 204, 57, 255] )
 
 	GameMode_SetDefaultScoreLimits( GAMEMODE_HOTPOTATO, 12, 0 ) // set this to default max 12 player count
