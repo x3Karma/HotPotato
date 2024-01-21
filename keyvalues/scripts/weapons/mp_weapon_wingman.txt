@@ -1,0 +1,17 @@
+WeaponData
+{
+	Mods
+	{
+		hotpotato
+		{
+			damage_near_value "1"
+			damage_far_value "1"
+			damage_very_far_value "1"
+			ammo_clip_size "1"
+			reload_time "*1.9"
+			reload_time_late1 "*1.9"
+			reloadempty_time "*1.9"
+			reloadempty_time_late1 "*1.9"
+		}
+	}
+}
